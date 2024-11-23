@@ -197,7 +197,6 @@ onMounted(() => {
 }
 
 .card-holder {
-  border: 1px solid white;
   width: 100%; /* Allow the card to fill the container's width */
 }
 
@@ -205,5 +204,19 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
+}
+
+.card-holder {
+  position: relative;
+  width: 100%; /* Allow the card to fill the container's width */
+  padding-top: 170%; /* This creates a 16:9 aspect ratio (height/width = 9/16) */
+}
+
+.card-holder > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 </style>

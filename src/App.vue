@@ -4,6 +4,13 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'App'
+  name: "App",
 });
 </script>
+
+<style>
+@font-face {
+  font-family: "Tungsten";
+  src: url("../assets/Fonts/Tungsten-Bold.ttf");
+}
+</style>
