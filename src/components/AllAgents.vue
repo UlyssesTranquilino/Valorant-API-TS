@@ -1,7 +1,7 @@
 <template>
   <div class="all-agents-container">
     <div class="row">
-      <h1 class="text-white agents-title q-mb-xs">AGENTS</h1>
+      <h1 class="text-white agents-title q-mb-xs col-12">AGENTS</h1>
       <div class="filter-buttons flex q-gutter-sm">
         <q-btn
           v-if="!agentRolesToggled[0]"
@@ -70,9 +70,16 @@
     </div>
     <div class="row grid-container q-mt-lg">
       <div v-for="agent in agents" :key="agent.uuid">
-        <div class="card-holder">
-          <AgentCard :data="agent" />
-        </div>
+        <router-link
+          :to="{
+            path: `/agentInfo/${agent.displayName}`,
+            query: { data: JSON.stringify(agent) },
+          }"
+        >
+          <div class="card-holder">
+            <AgentCard :data="agent" />
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -81,6 +88,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import AgentCard from "./AgentCard.vue";
+import { useRouter, useRoute } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
+
 const agents = ref<Object[]>([]);
 const allAgents = ref<Object[]>([]);
 
@@ -194,6 +206,7 @@ onMounted(() => {
 
 .filter-buttons .q-btn {
   font-size: 13px;
+  height: 10px;
 }
 
 .card-holder {
