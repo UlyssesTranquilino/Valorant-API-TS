@@ -1,8 +1,8 @@
 <template>
   <div
-    class="search-container q-pt-xl q-pb-lg flex items-center justify-center text-white"
+    class="search-container q-pt-xl q-pb-lg flex items-center justify-center row text-white"
   >
-    <div class="row items-center justify-center">
+    <div class="col-12 items-center justify-center">
       <p class="q-ma-xs col-12 text-center">
         A 5v5 character-based tactical shooter
       </p>
