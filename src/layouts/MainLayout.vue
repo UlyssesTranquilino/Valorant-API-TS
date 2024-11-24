@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="bg-accent">
     <q-header class="bg-dark">
       <q-toolbar>
         <q-btn
@@ -16,20 +16,31 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-      </q-list>
+    <q-drawer
+      v-model="leftDrawerOpen"
+      show-if-above
+      class="bg-secondary text-white"
+    >
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <search />
     </q-page-container>
+
+    <q-page-container class="q-pa-lg">
+      <AllAgents />
+    </q-page-container>
+    <!-- 
+    <q-page-container>
+      <router-view />
+    </q-page-container> -->
   </q-layout>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import Search from "src/components/Search.vue";
+import AllAgents from "src/components/AllAgents.vue";
 
 defineOptions({
   name: "MainLayout",
