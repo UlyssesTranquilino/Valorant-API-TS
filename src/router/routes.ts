@@ -10,6 +10,10 @@ const routes: RouteRecordRaw[] = [
     path: "/agentInfo/:agentName",
     component: () => import("components/AgentInfo.vue"),
   },
+  {
+    path: "/agentInfoDesktop/:agentName",
+    component: () => import("components/DesktopAgentInfo.vue"),
+  },
 
   // Always leave this as last one,
   // but you can also remove it
