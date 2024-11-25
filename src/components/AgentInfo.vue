@@ -25,11 +25,15 @@
           <p class="role-title q-ma-none">
             {{ agentData.role.displayName.toUpperCase() }}
           </p>
-          <h1>{{ agentData.displayName.toUpperCase() }}</h1>
+          <h1 class="agent-title-name">
+            {{ agentData.displayName.toUpperCase() }}
+          </h1>
           <div class="horizontal-line">
             <hr class="name-line no-border bg-primary q-ma-none" />
           </div>
-          <p class="desc text-center">{{ agentData.description }}</p>
+          <p class="desc text-center q-pr-lg q-pl-lg">
+            {{ agentData.description }}
+          </p>
         </div>
 
         <div
@@ -44,10 +48,14 @@
         </div>
       </div>
 
-      <div class="abilities-container q-mt-md q-mb-md q-pt-xl">
-        <h1 class="special-abilities q-mb-sm text-center">SPECIAL ABILITIES</h1>
+      <div
+        class="abilities-container row q-mt-md q-mb-md q-pt-xl flex items-center justify-center"
+      >
+        <h1 class="special-abilities q-mb-sm text-center col-12">
+          SPECIAL ABILITIES
+        </h1>
         <hr class="line-abilities no-border" />
-        <div class="abilities q-mt-xl">
+        <div class="abilities q-mt-lg">
           <div
             class="ability-1"
             @click="toggleAbility(1)"
@@ -176,8 +184,6 @@ import NavBar from "../pages/NavBar.vue";
 const route = useRoute();
 const agentData = ref(JSON.parse(route.query.data as string));
 
-console.log("AGENT: ", agentData);
-
 defineOptions({
   name: "AgentInfo",
 });
@@ -287,7 +293,8 @@ const removeHover = (num: number) => {
 .info-container {
   background-color: #01061e;
   width: 100%;
-  height: 1550px;
+  height: auto;
+  padding-bottom: 100px;
   background-image: url("../assets/Background/SideBG.png");
   background-repeat: no-repeat;
 }
@@ -419,6 +426,21 @@ const removeHover = (num: number) => {
 }
 
 @media (min-width: 576px) {
+  .back-button {
+    padding-top: 40px;
+  }
+  .back-text {
+    font-size: 30px;
+  }
+
+  .role-title {
+    font-size: 20px;
+  }
+
+  h1.agent-title-name {
+    font-size: 90px !important;
+  }
+
   .agentImg {
     width: 1000px;
     object-fit: fill;
@@ -426,7 +448,86 @@ const removeHover = (num: number) => {
   }
 
   .key {
-    font-size: 23px;
+    font-size: 30px;
   }
+
+  .desc {
+    width: 500px;
+    font-size: 16px !important;
+    line-height: normal !important;
+  }
+
+  .special-abilities {
+    font-size: 80px;
+  }
+
+  .line-abilities {
+    width: 300px;
+  }
+
+  .ability-image1,
+  .ability-image2,
+  .ability-image3,
+  .ability-image4 {
+    width: 50px;
+    padding: 5px;
+  }
+
+  .skillImg {
+    height: 70px;
+  }
+
+  /* ABILITY TITLE AND DETAIL */
+  .ability-detail {
+    margin: 60px 0 60px 0;
+  }
+
+  .ability-detail h2 {
+    font-size: 50px;
+  }
+
+  .ability-detail p {
+    font-size: 16px;
+    line-height: normal;
+  }
+
+  .agent-role {
+    margin-top: 10px !important;
+  }
+  .role-text h1 {
+    font-size: 80px;
+  }
+
+  .role-text p {
+    font-size: 16px;
+    line-height: normal;
+  }
+
+  .ability-detail {
+    width: 600px;
+  }
+
+  .role-img img {
+    width: 110px !important;
+  }
+
+  .mainInfo-img {
+    height: 250px;
+    background-size: 800px;
+    margin-top: 70px;
+  }
+
+  .mainInfo-img img {
+    width: 1000px;
+  }
+}
+
+@media (min-width: 768px) {
+  .desc {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1100px) {
 }
 </style>

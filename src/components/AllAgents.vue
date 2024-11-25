@@ -72,7 +72,10 @@
       <div v-for="agent in agents" :key="agent.uuid">
         <router-link
           :to="{
-            path: `/agentInfo/${agent.displayName}`,
+            path:
+              screenWidth > 1100
+                ? `/agentInfoDesktop/${agent.displayName}`
+                : `/agentInfo/${agent.displayName}`,
             query: { data: JSON.stringify(agent) },
           }"
         >
@@ -86,9 +89,25 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import AgentCard from "./AgentCard.vue";
 import { useRouter, useRoute } from "vue-router";
+
+const screenWidth = ref(window.innerWidth);
+
+const updateWidth = () => {
+  screenWidth.value = window.innerWidth; // Update screenWidth on resize
+};
+
+// Add event listener when the component is mounted
+onMounted(() => {
+  window.addEventListener("resize", updateWidth);
+});
+
+// Remove event listener when the component is destroyed
+onUnmounted(() => {
+  window.removeEventListener("resize", updateWidth);
+});
 
 const router = useRouter();
 const route = useRoute();
