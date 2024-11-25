@@ -1,7 +1,23 @@
 <template>
   <q-layout view="lHh Lpr lFf" class="bg-accent">
     <NavBar />
-    <div class="text-white info-container q-pt-xl">
+    <div class="back-button q-mt-xl">
+      <router-link
+        :to="{
+          path: '/',
+        }"
+      >
+        <q-btn
+          align="left"
+          class="btn-fixed-width q-mt-lg q-mb-lg q-ml-xs"
+          style="font-family: 'Tungsten'"
+          color="accent"
+          icon="arrow_back"
+          ><span class="back-text q-ml-sm">BACK</span></q-btn
+        >
+      </router-link>
+    </div>
+    <div class="text-white info-container q-pt-sm">
       <div
         class="main-info-container q-pt-xl justify-center items-center q-mr-lg q-ml-lg"
       >
@@ -269,7 +285,11 @@ const removeHover = (num: number) => {
 </script>
 <style scoped>
 .info-container {
-  border: 2px solid white;
+  background-color: #01061e;
+  width: 100%;
+  height: 1550px;
+  background-image: url("../assets/Background/SideBG.png");
+  background-repeat: no-repeat;
 }
 
 .mainInfo-text p:nth-child(1) {
@@ -387,5 +407,26 @@ const removeHover = (num: number) => {
 .agent-role p {
   font-family: "Roboto";
   font-size: 11px;
+}
+
+.back-button {
+  font-size: 30px;
+}
+
+.back-text {
+  font-size: 23px;
+  letter-spacing: 1px;
+}
+
+@media (min-width: 576px) {
+  .agentImg {
+    width: 1000px;
+    object-fit: fill;
+    transform: translateY(-100px);
+  }
+
+  .key {
+    font-size: 23px;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="all-agents-container">
+  <div class="all-agents-container agents">
     <div class="row">
       <h1 class="text-white agents-title q-mb-xs col-12">AGENTS</h1>
       <div class="filter-buttons flex q-gutter-sm">
@@ -231,5 +231,60 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+@media (min-width: 576px) {
+  .grid-container {
+    gap: 20px;
+  }
+  .agents .agentsText {
+    font-size: 55px;
+    margin: 0 0 70px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .agents {
+    padding: 50px 30px 0 30px;
+  }
+  .agents .agentsText {
+    font-size: 65px;
+    margin: 0 0 80px 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-container {
+    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .agents {
+    padding: 50px 50px 0 50px;
+  }
+  .agents .agentsText {
+    font-size: 70px;
+    margin: 0 0 90px 0;
+  }
+}
+
+@media (min-width: 1250px) {
+  .agents {
+    width: 1200px !important;
+    padding: 0;
+    margin: auto;
+    margin-top: 100px;
+  }
+  .grid-container {
+    width: 1200px;
+    margin: auto;
+  }
+
+  .filter-buttons {
+    margin-bottom: 50px;
+  }
+
+  .agents-title {
+    font-size: 60px;
+  }
 }
 </style>
