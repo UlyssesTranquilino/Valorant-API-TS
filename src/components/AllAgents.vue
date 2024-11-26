@@ -72,10 +72,7 @@
       <div v-for="agent in agents" :key="agent.uuid">
         <router-link
           :to="{
-            path:
-              screenWidth > 1100
-                ? `/agentInfoDesktop/${agent.displayName}`
-                : `/agentInfo/${agent.displayName}`,
+            path: `/agentInfo/${agent.displayName}`,
             query: { data: JSON.stringify(agent) },
           }"
         >
