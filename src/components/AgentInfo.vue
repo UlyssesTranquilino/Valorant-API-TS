@@ -1,23 +1,28 @@
 <template>
   <q-layout view="lHh Lpr lFf" class="bg-accent">
-    <NavBar />
-    <div class="back-button q-mt-xl">
-      <router-link
-        :to="{
-          path: '/',
-        }"
-      >
-        <q-btn
-          align="left"
-          class="btn-fixed-width q-mt-lg q-mb-lg q-ml-xs"
-          style="font-family: 'Tungsten'"
-          color="accent"
-          icon="arrow_back"
-          ><span class="back-text q-ml-sm">BACK</span></q-btn
-        >
-      </router-link>
+    <div v-if="screenWidth > 1100">
+      <DesktopAgentInfo />
     </div>
-    <div class="text-white info-container q-pt-sm">
+
+    <div v-else class="text-white info-container q-pt-sm">
+      <NavBar />
+      <div class="back-button q-mt-xl">
+        <router-link
+          :to="{
+            path: '/',
+          }"
+        >
+          <q-btn
+            align="left"
+            class="btn-fixed-width q-mt-lg q-mb-lg q-ml-md"
+            style="font-family: 'Tungsten'"
+            color="accent"
+            icon="arrow_back"
+            ><span class="back-text q-ml-sm">BACK</span></q-btn
+          >
+        </router-link>
+      </div>
+
       <div
         class="main-info-container q-pt-xl justify-center items-center q-mr-lg q-ml-lg"
       >
@@ -176,10 +181,11 @@
 
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 import Search from "src/components/Search.vue";
 import NavBar from "../pages/NavBar.vue";
+import DesktopAgentInfo from "./DesktopAgentInfo.vue";
 
 const route = useRoute();
 const agentData = ref(JSON.parse(route.query.data as string));
@@ -189,6 +195,22 @@ defineOptions({
 });
 
 const leftDrawerOpen = ref(false);
+
+const screenWidth = ref(window.innerWidth);
+
+const updateWidth = () => {
+  screenWidth.value = window.innerWidth; // Update screenWidth on resize
+};
+
+// Add event listener when the component is mounted
+onMounted(() => {
+  window.addEventListener("resize", updateWidth);
+});
+
+// Remove event listener when the component is destroyed
+onUnmounted(() => {
+  window.removeEventListener("resize", updateWidth);
+});
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
