@@ -72,7 +72,7 @@
       <div v-for="agent in agents" :key="agent.uuid">
         <router-link
           :to="{
-            path: `/agentInfo/${agent.displayName}`,
+            path: `/agentInfo/${encodeURIComponent(agent.displayName)}`,
             query: { data: JSON.stringify(agent) },
           }"
         >
@@ -116,6 +116,23 @@ let filteredAgents = <Object[]>[];
 
 //Agent Roles Toggled = Initiator, Duelists, Controllers, sentinels
 const agentRolesToggled = ref<boolean[]>([false, false, false, false]);
+
+defineProps({
+  searchAgent: Function,
+  agentFound: Boolean,
+});
+
+const searchAgent = (agentName: string) => {
+  console.log("CALLED: ", agentName);
+  allAgents.value.forEach((agent: any) => {
+    if (agent.displayName.toUpperCase() === agentName.toUpperCase()) {
+      router.push({
+        path: `/agentInfo/${agent}`,
+        query: { data: JSON.stringify(agent) },
+      });
+    }
+  });
+};
 
 //Agent Rolge Toggled
 const toggleRole = (num: number) => {

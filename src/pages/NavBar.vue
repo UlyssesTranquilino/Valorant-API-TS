@@ -10,9 +10,32 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
           class="q-mr-md"
+          v-if="screenWidth < 1100"
         />
-        <img src="../assets/Logo/riotLogo.png" class="riot-logo" />
-        <img src="../assets/Logo/valorantLogo.png" class="valo-logo" />
+        <a href="https://www.riotgames.com/en" target="_blank">
+          <img
+            v-if="screenWidth < 1100"
+            src="../assets/Logo/riotLogo.png"
+            class="riot-logo"
+          />
+          <img
+            v-else
+            src="../assets/Logo/riotLogo.png"
+            class="riot-logo q-ml-xl"
+          />
+        </a>
+        <a href="https://playvalorant.com/en-sg/" target="_blank">
+          <img
+            v-if="screenWidth < 1100"
+            src="../assets/Logo/valorantLogo.png"
+            class="valo-logo"
+          />
+          <img
+            v-else
+            src="../assets/Logo/valorantLogo.png"
+            class="valo-logo q-ml-sm"
+          />
+        </a>
       </q-toolbar>
     </q-header>
 
@@ -20,16 +43,31 @@
       v-model="leftDrawerOpen"
       show-if-above
       class="bg-secondary text-white"
+      v-if="screenWidth < 1100"
     >
     </q-drawer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 
 defineOptions({
   name: "NavBar",
+});
+
+const screenWidth = ref(window.innerWidth);
+
+const updateWidth = () => {
+  screenWidth.value = window.innerWidth;
+};
+
+onMounted(() => {
+  window.addEventListener("resize", updateWidth);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", updateWidth);
 });
 
 const leftDrawerOpen = ref(false);

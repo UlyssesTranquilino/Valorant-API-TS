@@ -190,6 +190,8 @@ import DesktopAgentInfo from "./DesktopAgentInfo.vue";
 const route = useRoute();
 const agentData = ref(JSON.parse(route.query.data as string));
 
+console.log("AGENT: ", agentData);
+
 defineOptions({
   name: "AgentInfo",
 });
