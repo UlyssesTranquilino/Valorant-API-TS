@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf" class="bg-accent q-pt-xl">
+  <q-layout view="lHh Lpr lFf" class="bg-accent q-pt-xl layout-container">
     <NavBar />
     <div class="back-button q-mt-xl" style="padding-left: 50px; margin: auto">
       <router-link
@@ -174,6 +174,17 @@
           </div>
         </div>
       </div>
+
+      <div
+        class="desktop-agentImg-container flex items-center justify-center"
+        :style="{ backgroundImage: `url(${agentData.background})` }"
+      >
+        <img
+          class="desktop-agentImg"
+          :alt="agentData.displayName"
+          :src="agentData.fullPortraitV2"
+        />
+      </div>
     </div>
   </q-layout>
 </template>
@@ -299,7 +310,7 @@ const removeHover = (num: number) => {
   width: 100%;
   background-image: url("../assets/Background/SideBG.png");
   background-repeat: no-repeat;
-  padding: 0 50px;
+  padding: 0 0 0 40px;
 }
 
 .desktop-container {
@@ -390,5 +401,63 @@ const removeHover = (num: number) => {
 
 .role-title-desktop {
   font-size: 20px !important;
+}
+
+.desktop-agentImg-container {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  margin-top: 50px;
+  height: 700px;
+  overflow: hidden;
+  position: inherit;
+  width: 300px;
+  right: 0;
+}
+
+.desktop-agentImg {
+  width: 730px;
+  z-index: 1;
+  position: relative;
+}
+.layout-container {
+  padding-bottom: 100px;
+}
+
+@media (min-width: 1250px) {
+  .mainInfo-text .desc {
+    font-size: 15px;
+  }
+
+  .desktop-agentImg {
+    width: 880px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .desktop-agentImg-container {
+    background-size: 120%;
+    margin-top: 10px;
+    height: 800px;
+    width: 400px;
+    right: 0;
+  }
+
+  .desktop-container p {
+    font-size: 15px;
+  }
+
+  .desktop-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: #01061e;
+    color: white;
+    margin: auto;
+    width: 1200px;
+    padding: 0;
+  }
+  .back-button {
+    width: 1350px;
+  }
 }
 </style>
