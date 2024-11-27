@@ -188,7 +188,7 @@ import NavBar from "../pages/NavBar.vue";
 import DesktopAgentInfo from "./DesktopAgentInfo.vue";
 
 const route = useRoute();
-const agentData = ref(JSON.parse(route.query.data as string));
+const agentData = ref(JSON.parse(route.query.data));
 
 console.log("AGENT: ", agentData);
 

@@ -37,7 +37,7 @@ const searchAgent = (agent: string) => {
   allAgents.value.forEach((agentName: any) => {
     if (agent.toUpperCase() === agentName.displayName.toUpperCase()) {
       router.push({
-        path: `/agentInfo/${agentName.displayName}`,
+        path: `/agentInfo/${encodeURIComponent(agent.displayName)}`,
         query: { data: JSON.stringify(agentName) },
       });
       agentFound.value = true;
