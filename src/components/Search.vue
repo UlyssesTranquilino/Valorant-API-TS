@@ -11,12 +11,14 @@
     <div class="q-pa-xs q-ma-xs search flex items-center justify-center row">
       <q-input
         filled
-        v-model="text"
+        v-model="agentName"
+        @keydown.enter="searchAgent"
         :dense="dense"
         class="bg-white q-mt-xs input-search"
       >
         <template v-slot:prepend>
           <q-icon name="search"></q-icon>
+          <p v-if="!isFound">AGENT NOT FOUND!</p>
         </template>
       </q-input>
       <div class="search-button-container q-mt-lg">
@@ -35,7 +37,16 @@
 import { ref } from "vue";
 
 const dense = ref<string>("dense");
-const text = ref<string>("");
+const agentName = ref<string>("");
+const emit = defineEmits(["search"]);
+const searchAgent = () => {
+  emit("search", agentName.value);
+  agentName.value = "";
+};
+
+defineProps({
+  isFound: Boolean,
+});
 </script>
 
 <style scoped>
