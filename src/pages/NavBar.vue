@@ -6,12 +6,29 @@
           flat
           dense
           round
-          icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
           class="q-mr-md"
+          style="margin-bottom: 7px"
           v-if="screenWidth < 1100"
-        />
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </q-btn>
+
         <a href="https://www.riotgames.com/en" target="_blank">
           <img
             v-if="screenWidth < 1100"
@@ -45,12 +62,51 @@
       class="bg-secondary text-white"
       v-if="screenWidth < 1100"
     >
+      <q-scroll-area class="fit">
+        <img
+          v-if="screenWidth < 1100"
+          src="../assets/Logo/valorantLogo.png"
+          class="valo-logo"
+        />
+        <q-list>
+          <div v-for="(menuItem, index) in menuList" :key="index">
+            <q-item
+              clickable
+              :active="menuItem.label === 'Outbox'"
+              v-ripple
+              @click="drawerToggle(menuItem.label)"
+            >
+              <q-item-section
+                style="font-family: 'Tungsten; font-size: 30px; letter-spacing: 1px;"
+              >
+                {{ menuItem.label }}
+              </q-item-section>
+            </q-item>
+            <q-separator :key="'sep' + index" v-if="menuItem.separator" />
+          </div>
+        </q-list>
+      </q-scroll-area>
     </q-drawer>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
+import { matMenu } from "@quasar/extras/material-icons";
+import { mdiAbTesting } from "@quasar/extras/mdi-v6";
+import { fasFont } from "@quasar/extras/fontawesome-v5";
+const menuList = [
+  {
+    label: "AGENTS",
+    separator: true,
+  },
+  {
+    label: "MAPS",
+    separator: false,
+  },
+];
+
+const drawer = ref(false);
 
 defineOptions({
   name: "NavBar",
@@ -69,6 +125,23 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("resize", updateWidth);
 });
+
+const drawerToggle = (label: string) => {
+  console.log(label);
+  const sectionId = label.toLowerCase().replace(" ", "-"); // Convert label to ID (e.g. "Agent" -> "agent")
+  console.log("SECTION ID: ", sectionId);
+  const sectionElement = document.getElementById(`${sectionId}-section`);
+  toggleLeftDrawer();
+  console.log("SECTION ELEMENT: ", sectionElement);
+  if (sectionElement) {
+    sectionElement.scrollIntoView({
+      behavior: "smooth", // Smooth scrolling
+      block: "start", // Scroll to the start of the section
+    });
+  } else {
+    console.warn(`Section for label "${label}" not found.`);
+  }
+};
 
 const leftDrawerOpen = ref(false);
 

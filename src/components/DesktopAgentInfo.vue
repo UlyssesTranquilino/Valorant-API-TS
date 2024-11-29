@@ -7,22 +7,49 @@
           path: '/',
         }"
       >
-        <q-btn
-          align="left"
+        <button
           class="btn-fixed-width q-mt-lg q-mb-lg q-ml-xs"
-          style="font-family: 'Tungsten'"
-          color="accent"
-          icon="arrow_back"
-          ><span class="back-text q-ml-sm" style="font-size: 25px"
-            >BACK</span
-          ></q-btn
+          style="
+            font-family: 'Tungsten';
+            background-color: var(--q-color-accent);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            padding: 20px 0 0 20px;
+            cursor: pointer;
+            text-decoration: none;
+          "
         >
+          <!-- Inline SVG for the back arrow -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="flex-shrink: 0"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <!-- Back text -->
+          <span
+            class="back-text q-ml-sm"
+            style="margin-left: 5px; text-decoration: none; font-size: 25px"
+            >BACK</span
+          >
+        </button>
       </router-link>
     </div>
 
     <div class="desktop-container text-white q-mt-md">
       <div class="desktop-agentInfos-container">
-        <div class="mainInfo-text">
+        <div class="mainInfo-text q-pt-xl">
           <p class="role-title-desktop text-white">
             {{ agentData.role.displayName.toUpperCase() }}
           </p>
@@ -204,7 +231,6 @@ defineOptions({
 });
 
 const leftDrawerOpen = ref(false);
-
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
@@ -320,7 +346,7 @@ const removeHover = (num: number) => {
   color: white;
   padding: 0 5%;
   background-image: url("../assets/Background/EffectsBG.png");
-  height: 900px;
+  height: 950px;
 }
 
 .desktop-agentInfos-container .abilities-container {

@@ -1,8 +1,11 @@
 <template>
-  <div class="all-agents-container agents">
+  <div class="all-agents-container agents" id="agents-section">
     <div class="row">
       <h1 class="text-white agents-title q-mb-xs col-12">AGENTS</h1>
-      <div class="filter-buttons flex q-gutter-sm">
+      <div
+        class="filter-buttons flex q-gutter-sm"
+        style="font-family: 'Valorant"
+      >
         <q-btn
           v-if="!agentRolesToggled[0]"
           color="secondary"
@@ -14,10 +17,25 @@
           v-if="agentRolesToggled[0]"
           rounded
           color="primary"
-          icon-right="close"
           label="INITIATORS"
           @click="unToggleRole(0)"
-        />
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin: 0 0 3px 8px"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </q-btn>
 
         <q-btn
           v-if="!agentRolesToggled[1]"
@@ -30,10 +48,24 @@
           v-if="agentRolesToggled[1]"
           rounded
           color="primary"
-          icon-right="close"
           label="DUELISTS"
           @click="unToggleRole(1)"
-        />
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin: 0 0 3px 8px"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line></svg
+        ></q-btn>
 
         <q-btn
           v-if="!agentRolesToggled[2]"
@@ -46,10 +78,25 @@
           v-if="agentRolesToggled[2]"
           rounded
           color="primary"
-          icon-right="close"
           label="CONTROLLERS"
           @click="unToggleRole(2)"
-        />
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin: 0 0 3px 8px"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </q-btn>
 
         <q-btn
           v-if="!agentRolesToggled[3]"
@@ -62,10 +109,25 @@
           v-if="agentRolesToggled[3]"
           rounded
           color="primary"
-          icon-right="close"
           label="SENTINELS"
           @click="unToggleRole(3)"
-        />
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin: 0 0 3px 8px"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </q-btn>
       </div>
     </div>
     <div class="row grid-container q-mt-lg">

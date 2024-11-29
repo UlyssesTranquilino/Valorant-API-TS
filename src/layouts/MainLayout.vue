@@ -8,6 +8,10 @@
     <q-page-container class="q-pa-lg">
       <AllAgents />
     </q-page-container>
+
+    <q-page-container >
+      <MapsVue/>
+    </q-page-container>
   </q-layout>
 </template>
 
@@ -17,6 +21,7 @@ import { useRouter } from "vue-router";
 import Search from "src/components/Search.vue";
 import AllAgents from "src/components/AllAgents.vue";
 import NavBar from "../pages/NavBar.vue";
+import MapsVue from "../components/Maps.vue";
 
 const router = useRouter();
 

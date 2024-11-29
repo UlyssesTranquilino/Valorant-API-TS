@@ -6,20 +6,43 @@
 
     <div v-else class="text-white info-container q-pt-sm">
       <NavBar />
-      <div class="back-button q-mt-xl">
+      <div class="back-button q-mt-sm">
         <router-link
           :to="{
             path: '/',
           }"
         >
-          <q-btn
-            align="left"
+          <button
             class="btn-fixed-width q-mt-lg q-mb-lg q-ml-md"
-            style="font-family: 'Tungsten'"
-            color="accent"
-            icon="arrow_back"
-            ><span class="back-text q-ml-sm">BACK</span></q-btn
+            style="
+              font-family: 'Tungsten';
+              background-color: var(--q-color-accent);
+              color: white;
+              border: none;
+              display: flex;
+              align-items: center;
+              padding: 10px;
+              cursor: pointer;
+            "
           >
+            <!-- Inline SVG for the back arrow -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="flex-shrink: 0"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span class="back-text q-ml-sm" style="margin-left: 5px">BACK</span>
+          </button>
         </router-link>
       </div>
 
@@ -189,8 +212,6 @@ import DesktopAgentInfo from "./DesktopAgentInfo.vue";
 
 const route = useRoute();
 const agentData = ref(JSON.parse(route.query.data));
-
-console.log("AGENT: ", agentData);
 
 defineOptions({
   name: "AgentInfo",
