@@ -2,6 +2,9 @@
 
 A Quasar Project
 
+# WEBSITE LINK
+https://valorant-yulsz.netlify.app/#/
+
 ## Install the dependencies
 ```bash
 yarn
