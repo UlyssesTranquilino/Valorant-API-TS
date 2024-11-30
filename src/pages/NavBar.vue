@@ -2,7 +2,7 @@
   <div>
     <q-header class="bg-dark">
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
@@ -27,7 +27,7 @@
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
-        </q-btn>
+        </q-btn> -->
 
         <a href="https://www.riotgames.com/en" target="_blank">
           <img
@@ -55,7 +55,7 @@
         </a>
       </q-toolbar>
     </q-header>
-
+    <!-- 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
@@ -86,7 +86,7 @@
           </div>
         </q-list>
       </q-scroll-area>
-    </q-drawer>
+    </q-drawer> -->
   </div>
 </template>
 
@@ -126,18 +126,27 @@ onUnmounted(() => {
   window.removeEventListener("resize", updateWidth);
 });
 
-const drawerToggle = (label: string) => {
-  console.log(label);
-  const sectionId = label.toLowerCase().replace(" ", "-"); // Convert label to ID (e.g. "Agent" -> "agent")
-  console.log("SECTION ID: ", sectionId);
+const drawerToggle = (label: string): void => {
+  // Convert label to section ID
+  const sectionId = label.toLowerCase().replace(" ", "-"); // e.g., "AGENTS" -> "agents"
   const sectionElement = document.getElementById(`${sectionId}-section`);
+
+  // Toggle drawer (close it)
   toggleLeftDrawer();
-  console.log("SECTION ELEMENT: ", sectionElement);
+
+  console.log("SECTION ID:", sectionId);
+  console.log("SECTION ELEMENT:", sectionElement);
+
   if (sectionElement) {
+    // Scroll to the section
     sectionElement.scrollIntoView({
-      behavior: "smooth", // Smooth scrolling
-      block: "start", // Scroll to the start of the section
+      behavior: "smooth",
+      block: "start",
     });
+
+    // Log position for debugging
+    const rect = sectionElement.getBoundingClientRect();
+    console.log(`Position - Top: ${rect.top}, Left: ${rect.left}`);
   } else {
     console.warn(`Section for label "${label}" not found.`);
   }

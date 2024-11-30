@@ -5,12 +5,12 @@
       <Search @search="searchAgent" :isFound="agentFound" />
     </q-page-container>
 
-    <q-page-container class="q-pa-lg">
+    <q-page-container class="q-pa-lg" id="agents-section">
       <AllAgents />
     </q-page-container>
 
-    <q-page-container >
-      <MapsVue/>
+    <q-page-container id="maps-section">
+      <MapsVue />
     </q-page-container>
   </q-layout>
 </template>

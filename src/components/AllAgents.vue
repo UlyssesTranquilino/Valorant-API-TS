@@ -1,5 +1,5 @@
 <template>
-  <div class="all-agents-container agents" id="agents-section">
+  <div class="all-agents-container agents">
     <div class="row">
       <h1 class="text-white agents-title q-mb-xs col-12">AGENTS</h1>
       <div

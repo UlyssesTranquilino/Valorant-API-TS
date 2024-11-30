@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary q-pa-lg all-maps-container" id="maps-section">
+  <div class="bg-primary q-pa-lg all-maps-container">
     <div class="main-map-container">
       <div class="row">
         <h1 class="text-title text-white" style="font-family: 'Tungsten'">
